@@ -1,0 +1,65 @@
+{
+    "sac": {
+        "checkpoints": [
+            {
+                "steps": 3499998,
+                "file_path": "results/VB_dqn_1/sac/sac-3499998.onnx",
+                "reward": null,
+                "creation_time": 1688433677.113996,
+                "auxillary_file_paths": [
+                    "results/VB_dqn_1/sac/sac-3499998.pt"
+                ]
+            },
+            {
+                "steps": 3999998,
+                "file_path": "results/VB_dqn_1/sac/sac-3999998.onnx",
+                "reward": null,
+                "creation_time": 1688434640.442079,
+                "auxillary_file_paths": [
+                    "results/VB_dqn_1/sac/sac-3999998.pt"
+                ]
+            },
+            {
+                "steps": 4499996,
+                "file_path": "results/VB_dqn_1/sac/sac-4499996.onnx",
+                "reward": null,
+                "creation_time": 1688435605.189591,
+                "auxillary_file_paths": [
+                    "results/VB_dqn_1/sac/sac-4499996.pt"
+                ]
+            },
+            {
+                "steps": 4999998,
+                "file_path": "results/VB_dqn_1/sac/sac-4999998.onnx",
+                "reward": null,
+                "creation_time": 1688436579.125225,
+                "auxillary_file_paths": [
+                    "results/VB_dqn_1/sac/sac-4999998.pt"
+                ]
+            },
+            {
+                "steps": 5000002,
+                "file_path": "results/VB_dqn_1/sac/sac-5000002.onnx",
+                "reward": 0.0,
+                "creation_time": 1688436579.151146,
+                "auxillary_file_paths": [
+                    "results/VB_dqn_1/sac/sac-5000002.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 5000002,
+            "file_path": "results/VB_dqn_1/sac.onnx",
+            "reward": 0.0,
+            "creation_time": 1688436579.151146,
+            "auxillary_file_paths": [
+                "results/VB_dqn_1/sac/sac-5000002.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.11.0"
+    }
+}
