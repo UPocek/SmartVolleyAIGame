@@ -1,0 +1,65 @@
+{
+    "ppo": {
+        "checkpoints": [
+            {
+                "steps": 59499386,
+                "file_path": "results/VB_2/ppo/ppo-59499386.onnx",
+                "reward": 4.928571428571429,
+                "creation_time": 1688598375.515729,
+                "auxillary_file_paths": [
+                    "results/VB_2/ppo/ppo-59499386.pt"
+                ]
+            },
+            {
+                "steps": 59999590,
+                "file_path": "results/VB_2/ppo/ppo-59999590.onnx",
+                "reward": 4.642857142857143,
+                "creation_time": 1688598849.576131,
+                "auxillary_file_paths": [
+                    "results/VB_2/ppo/ppo-59999590.pt"
+                ]
+            },
+            {
+                "steps": 60000590,
+                "file_path": "results/VB_2/ppo/ppo-60000590.onnx",
+                "reward": 4.642857142857143,
+                "creation_time": 1688598849.619493,
+                "auxillary_file_paths": [
+                    "results/VB_2/ppo/ppo-60000590.pt"
+                ]
+            },
+            {
+                "steps": 60199230,
+                "file_path": "results/VB_2/ppo/ppo-60199230.onnx",
+                "reward": 5.404109589041096,
+                "creation_time": 1689066029.33294,
+                "auxillary_file_paths": [
+                    "results/VB_2/ppo/ppo-60199230.pt"
+                ]
+            },
+            {
+                "steps": 60235198,
+                "file_path": "results/VB_2/ppo/ppo-60235198.onnx",
+                "reward": 4.880681818181818,
+                "creation_time": 1689071363.905096,
+                "auxillary_file_paths": [
+                    "results/VB_2/ppo/ppo-60235198.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 60235198,
+            "file_path": "results/VB_2/ppo.onnx",
+            "reward": 4.880681818181818,
+            "creation_time": 1689071363.905096,
+            "auxillary_file_paths": [
+                "results/VB_2/ppo/ppo-60235198.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.11.0"
+    }
+}

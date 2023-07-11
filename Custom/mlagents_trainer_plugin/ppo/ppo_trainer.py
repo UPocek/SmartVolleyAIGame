@@ -1,6 +1,6 @@
 # # Unity ML-Agents Toolkit
-# ## ML-Agent Learning (A2C)
-# Contains an implementation of A2C as described in: https://arxiv.org/abs/1707.06347
+# ## ML-Agent Learning (ppo)
+# Contains an implementation of ppo as described in: https://arxiv.org/abs/1707.06347
 
 from typing import cast
 
@@ -13,7 +13,7 @@ from mlagents.trainers.trainer.on_policy_trainer import OnPolicyTrainer
 from mlagents.trainers.optimizer.torch_optimizer import TorchOptimizer
 from mlagents.trainers.trainer.trainer_utils import get_gae
 from mlagents.trainers.policy.torch_policy import TorchPolicy
-from .a2c_optimizer import A2COptimizer, A2CSettings
+from .ppo_optimizer import ppoOptimizer, ppoSettings
 from mlagents.trainers.trajectory import Trajectory
 from mlagents.trainers.behavior_id_utils import BehaviorIdentifiers
 from mlagents.trainers.settings import TrainerSettings
@@ -22,11 +22,11 @@ from mlagents.trainers.torch_entities.networks import SimpleActor, SharedActorCr
 
 logger = get_logger(__name__)
 
-TRAINER_NAME = "a2c"
+TRAINER_NAME = "ppo"
 
 
-class A2CTrainer(OnPolicyTrainer):
-    """The A2CTrainer is an implementation of the A2C algorithm."""
+class ppoTrainer(OnPolicyTrainer):
+    """The ppoTrainer is an implementation of the ppo algorithm."""
 
     def __init__(
         self,
@@ -39,7 +39,7 @@ class A2CTrainer(OnPolicyTrainer):
         artifact_path: str,
     ):
         """
-        Responsible for collecting experiences and training A2C model.
+        Responsible for collecting experiences and training ppo model.
         :param behavior_name: The name of the behavior associated with trainer config
         :param reward_buff_cap: Max reward history to track in the reward buffer
         :param trainer_settings: The parameters for the trainer.
@@ -57,8 +57,8 @@ class A2CTrainer(OnPolicyTrainer):
             seed,
             artifact_path,
         )
-        self.hyperparameters: A2CSettings = cast(
-            A2CSettings, self.trainer_settings.hyperparameters
+        self.hyperparameters: ppoSettings = cast(
+            ppoSettings, self.trainer_settings.hyperparameters
         )
         self.shared_critic = self.hyperparameters.shared_critic
         self.policy: TorchPolicy = None  # type: ignore
@@ -166,7 +166,7 @@ class A2CTrainer(OnPolicyTrainer):
         """
         Creates an Optimizer object
         """
-        return A2COptimizer(  # type: ignore
+        return ppoOptimizer(  # type: ignore
             cast(TorchPolicy, self.policy), self.trainer_settings  # type: ignore
         )  # type: ignore
 
@@ -200,7 +200,7 @@ class A2CTrainer(OnPolicyTrainer):
 
     @staticmethod
     def get_settings_type():
-        return A2CSettings
+        return ppoSettings
 
     @staticmethod
     def get_trainer_name() -> str:
@@ -208,6 +208,6 @@ class A2CTrainer(OnPolicyTrainer):
 
 
 def get_type_and_setting():
-    return {A2CTrainer.get_trainer_name(): A2CTrainer}, {
-        A2CTrainer.get_trainer_name(): A2CSettings
+    return {ppoTrainer.get_trainer_name(): ppoTrainer}, {
+        ppoTrainer.get_trainer_name(): ppoSettings
     }

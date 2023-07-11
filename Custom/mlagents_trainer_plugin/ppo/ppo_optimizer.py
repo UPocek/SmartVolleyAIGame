@@ -15,16 +15,12 @@ from mlagents.trainers.settings import (
 )
 from mlagents.trainers.torch_entities.networks import ValueNetwork
 from mlagents.trainers.torch_entities.agent_action import AgentAction
-<<<<<<<< HEAD:venv/lib/python3.9/site-packages/mlagents/trainers/ppo/optimizer_torch.py
 from mlagents.trainers.torch_entities.action_log_probs import ActionLogProbs
-========
->>>>>>>> aa4b02d5433f28a76c6f8a7193b85b4d27426793:Custom/mlagents_trainer_plugin/a2c/a2c_optimizer.py
 from mlagents.trainers.torch_entities.utils import ModelUtils
 from mlagents.trainers.trajectory import ObsUtil
 
 from mlagents.trainers.exception import TrainerConfigError
 
-<<<<<<<< HEAD:venv/lib/python3.9/site-packages/mlagents/trainers/ppo/optimizer_torch.py
 @attr.s(auto_attribs=True)
 class PPOSettings(OnPolicyHyperparamSettings):
     beta: float = 5.0e-3
@@ -38,30 +34,10 @@ class PPOSettings(OnPolicyHyperparamSettings):
 
 
 class TorchPPOOptimizer(TorchOptimizer):
-========
-
-@attr.s(auto_attribs=True)
-class A2CSettings(OnPolicyHyperparamSettings):
-    beta: float = 5.0e-3
-    lambd: float = 0.95
-    num_epoch: int = attr.ib(default=1)  # A2C does just one pass
-    shared_critic: bool = False
-
-    @num_epoch.validator
-    def _check_num_epoch_one(self, attribute, value):
-        if value != 1:
-            raise TrainerConfigError("A2C requires num_epoch = 1")
-
-    learning_rate_schedule: ScheduleType = ScheduleType.LINEAR
-    beta_schedule: ScheduleType = ScheduleType.LINEAR
-
-
-class A2COptimizer(TorchOptimizer):
->>>>>>>> aa4b02d5433f28a76c6f8a7193b85b4d27426793:Custom/mlagents_trainer_plugin/a2c/a2c_optimizer.py
     def __init__(self, policy: TorchPolicy, trainer_settings: TrainerSettings):
         """
         Takes a Policy and a Dict of trainer parameters and creates an Optimizer around the policy.
-        The A2C optimizer has a value estimator and a loss function.
+        The PPO optimizer has a value estimator and a loss function.
         :param policy: A TorchPolicy object that will be updated by this A2C Optimizer.
         :param trainer_params: Trainer parameters dictionary that specifies the
         properties of the trainer.
@@ -73,13 +49,6 @@ class A2COptimizer(TorchOptimizer):
             A2CSettings, trainer_settings.hyperparameters
         )
 
-<<<<<<<< HEAD:venv/lib/python3.9/site-packages/mlagents/trainers/ppo/optimizer_torch.py
-        self.hyperparameters: PPOSettings = cast(
-            PPOSettings, trainer_settings.hyperparameters
-        )
-
-========
->>>>>>>> aa4b02d5433f28a76c6f8a7193b85b4d27426793:Custom/mlagents_trainer_plugin/a2c/a2c_optimizer.py
         params = list(self.policy.actor.parameters())
         if self.hyperparameters.shared_critic:
             self._critic = policy.actor
@@ -90,13 +59,9 @@ class A2COptimizer(TorchOptimizer):
                 policy.behavior_spec.observation_specs,
                 network_settings=trainer_settings.network_settings,
             )
-<<<<<<<< HEAD:venv/lib/python3.9/site-packages/mlagents/trainers/ppo/optimizer_torch.py
             self._critic.to(default_device())
             params += list(self._critic.parameters())
-========
-        self._critic.to(default_device())
-        params += list(self._critic.parameters())
->>>>>>>> aa4b02d5433f28a76c6f8a7193b85b4d27426793:Custom/mlagents_trainer_plugin/a2c/a2c_optimizer.py
+
 
         self.decay_learning_rate = ModelUtils.DecayedValue(
             self.hyperparameters.learning_rate_schedule,
