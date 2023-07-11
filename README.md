@@ -1,4 +1,4 @@
-![SmartVolleyGame](https://github.com/UPocek/SmartVolleyAIGame/blob/master/docs/game02.png)
+https://github.com/UPocek/SmartVolleyAIGame/assets/46105849/05d55147-00f7-4e9d-8162-e906a5706f31
 
 # SmartVolleyGame - colaborative project with [Tamara Ilić](https://github.com/tamarailic)
 
